@@ -16,7 +16,10 @@ import Home from "./components/Home";
 const initialStore = {
   data: null,
   isLoading: true,
-  isModalOpen: true,
+  isModalOpen: false,
+  word: "",
+  modalMsg: "",
+  isMsgModalOpen: true,
 };
 
 //Store creation

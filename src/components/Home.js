@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import { DATA_FETCHED } from "../actions";
 //Components
 import Loading from "./Loading";
-import Modal from "./Modal";
+import MsgModal from "./modals/MsgModal";
+import WordModal from "./modals/WordModal";
+
 import WordsList from "./WordsList";
 
 //url for data fetching
@@ -15,14 +17,15 @@ function Home({ fetchHandler, data, isLoading, isModalOpen }) {
   //Data fetching
   useEffect(() => {
     fetchHandler(url);
-  }, [fetchHandler]);
+  }, [fetchHandler, isModalOpen]);
   //console.log({ data, isLoading });
 
   return (
     <div className="words-wrapper">
       {isLoading && <Loading />}
       {data && <WordsList />}
-      {isModalOpen && <Modal />}
+      {isModalOpen && <WordModal />}
+      <MsgModal />
     </div>
   );
 }

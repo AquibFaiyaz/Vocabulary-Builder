@@ -29,10 +29,16 @@ html {
     font-size: 2rem;
     cursor: pointer;
     .download {
-      height: 4rem;
-      width: 4rem;
+      height: 3.5rem;
+      width: 3.5rem;
     }
+  }
+  button:hover {
+    height: 60px;
+    width: 60px;
   }
 }
 
 @import "./wordCard";
+@import "./wordModal";
+@import "./msgModal";

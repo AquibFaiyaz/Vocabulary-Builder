@@ -1,0 +1,17 @@
+.msg-modal {
+  height: 30vh;
+  width: 40vw;
+  margin: auto;
+  margin-top: 10rem;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3);
+  h1 {
+    color: goldenrod;
+    font-weight: 400;
+  }
+}

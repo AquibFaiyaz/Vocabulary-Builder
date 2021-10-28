@@ -1,4 +1,12 @@
-import { DATA_FETCHED, POST_CLICKED, OPEN_MODAL } from "./actions";
+import axios from "axios";
+import {
+  DATA_FETCHED,
+  CLOSE_MODAL_SIDE,
+  OPEN_MODAL,
+  WORD_CHANGE,
+  FORM_SUBMIT,
+  CLOSE_MSG_MODAL,
+} from "./actions";
 
 const reducer = (state, action) => {
   //console.log(action);
@@ -11,13 +19,41 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === OPEN_MODAL) {
-    console.log("modal open");
+    //console.log("modal open");
     return {
       ...state,
       isModalOpen: true,
     };
   }
+  if (action.type === CLOSE_MODAL_SIDE) {
+    return {
+      ...state,
+      isModalOpen: false,
+    };
+  }
+  if (action.type === WORD_CHANGE) {
+    const { currVal } = action.payload;
+    //console.log(currVal);
+    return {
+      ...state,
+      word: currVal,
+    };
+  }
+  if (action.type === FORM_SUBMIT) {
+    const { msg } = action.payload;
+    console.log(msg);
 
+    return {
+      ...state,
+      word: "",
+      isModalOpen: false,
+      modalMsg: msg,
+      isMsgModalOpen: true,
+    };
+  }
+  if (action.type === CLOSE_MSG_MODAL) {
+    return { ...state, isMsgModalOpen: false };
+  }
   return state;
 };
 
