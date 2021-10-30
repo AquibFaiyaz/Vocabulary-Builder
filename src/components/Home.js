@@ -13,16 +13,24 @@ import WordsList from "./WordsList";
 //url for data fetching
 const url = "http://localhost:8000/api/v1/dictionary";
 
-function Home({ fetchHandler, data, isLoading, isModalOpen, isMsgModalOpen }) {
+function Home({
+  fetchHandler,
+  data,
+  isLoading,
+  isModalOpen,
+  isMsgModalOpen,
+  isChecked,
+}) {
   //Data fetching
   useEffect(() => {
     fetchHandler(url);
-  }, [fetchHandler, isModalOpen, isMsgModalOpen]);
+  }, [fetchHandler, isModalOpen, isMsgModalOpen, isChecked]);
   //console.log({ data, isLoading });
 
   return (
     <div className="words-wrapper">
       {isLoading && <Loading />}
+      {/* <Loading /> */}
       {data && <WordsList />}
       {isModalOpen && <WordModal />}
       {isMsgModalOpen && <MsgModal />}

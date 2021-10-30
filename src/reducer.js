@@ -61,7 +61,8 @@ const reducer = (state, action) => {
     return { ...state, modalMsg: msg, isMsgModalOpen: true };
   }
   if (action.type === CHECK_MEMORIZED) {
-    return { ...state, isChecked: !state.isChecked };
+    const { msg } = action.payload;
+    return { ...state, modalMsg: msg, isMsgModalOpen: true };
   }
   return state;
 };

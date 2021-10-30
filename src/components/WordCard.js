@@ -9,13 +9,14 @@ function WordCard({
   wordID,
   defData,
   _id,
+  memorized,
   handleCardDelete,
   handleCheck,
   isChecked,
 }) {
   //console.log(_id);
   return (
-    <div className={`card-container ${isChecked ? "checked" : ""} `}>
+    <div className={`card-container ${memorized ? "checked" : ""} `}>
       <h1>
         {wordID}
         <div className="under"></div>
@@ -36,7 +37,13 @@ function WordCard({
         Remove
       </button>
       <div className="check-box">
-        <input type="checkbox" className="check-input" onClick={handleCheck} />
+        <input
+          type="checkbox"
+          className="check-input"
+          onClick={() => {
+            handleCheck(_id);
+          }}
+        />
         <label className="label-text">Memorized</label>
       </div>
     </div>
@@ -68,8 +75,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         });
     },
 
-    handleCheck: () => {
-      dispatch({ type: CHECK_MEMORIZED });
+    handleCheck: async (_id) => {
+      const { memorized } = ownProps;
+      await axios
+        .patch(`http://localhost:8000/api/v1/dictionary/${_id}`, {
+          memorized: !memorized,
+        })
+        .then((response) => {
+          return dispatch({
+            type: CHECK_MEMORIZED,
+            payload: { msg: response.data },
+          });
+        });
     },
   };
 };
