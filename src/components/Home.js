@@ -13,11 +13,11 @@ import WordsList from "./WordsList";
 //url for data fetching
 const url = "http://localhost:8000/api/v1/dictionary";
 
-function Home({ fetchHandler, data, isLoading, isModalOpen }) {
+function Home({ fetchHandler, data, isLoading, isModalOpen, isMsgModalOpen }) {
   //Data fetching
   useEffect(() => {
     fetchHandler(url);
-  }, [fetchHandler, isModalOpen]);
+  }, [fetchHandler, isModalOpen, isMsgModalOpen]);
   //console.log({ data, isLoading });
 
   return (
@@ -25,14 +25,14 @@ function Home({ fetchHandler, data, isLoading, isModalOpen }) {
       {isLoading && <Loading />}
       {data && <WordsList />}
       {isModalOpen && <WordModal />}
-      <MsgModal />
+      {isMsgModalOpen && <MsgModal />}
     </div>
   );
 }
 
 const mapStatetoProps = (state) => {
-  const { data, isLoading, isModalOpen } = state;
-  return { data, isLoading, isModalOpen };
+  const { data, isLoading, isModalOpen, isMsgModalOpen } = state;
+  return { data, isLoading, isModalOpen, isMsgModalOpen };
 };
 const mapDispatchToProps = (dispatch) => {
   return {

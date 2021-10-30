@@ -6,6 +6,8 @@ import {
   WORD_CHANGE,
   FORM_SUBMIT,
   CLOSE_MSG_MODAL,
+  REMOVE_CARD,
+  CHECK_MEMORIZED,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -53,6 +55,13 @@ const reducer = (state, action) => {
   }
   if (action.type === CLOSE_MSG_MODAL) {
     return { ...state, isMsgModalOpen: false };
+  }
+  if (action.type === REMOVE_CARD) {
+    const { msg } = action.payload;
+    return { ...state, modalMsg: msg, isMsgModalOpen: true };
+  }
+  if (action.type === CHECK_MEMORIZED) {
+    return { ...state, isChecked: !state.isChecked };
   }
   return state;
 };

@@ -11,7 +11,9 @@ function WordModal({
   handleSubmit,
   handleClose,
   handleChange,
+
   word,
+  isProgressOpen,
 }) {
   return (
     <Modal
@@ -38,10 +40,13 @@ function WordModal({
     </Modal>
   );
 }
+
+//Redux Stuff
+
 const mapStateToProp = (state) => {
   //console.log(state);
-  const { isModalOpen, dispatch, word } = state;
-  return { isModalOpen, dispatch, word };
+  const { isModalOpen, dispatch, word, isProgressOpen } = state;
+  return { isModalOpen, dispatch, word, isProgressOpen };
 };
 
 const mapDispatcToProps = (dispatch) => {

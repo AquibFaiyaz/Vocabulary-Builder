@@ -13,7 +13,7 @@ html {
   width: 90vw;
   margin: auto;
   position: relative;
-  button {
+  .fetch-btn {
     position: fixed;
     background: rgba(6, 6, 153, 0.5);
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.25);
@@ -33,7 +33,7 @@ html {
       width: 3.5rem;
     }
   }
-  button:hover {
+  .fetch-btn:hover {
     height: 60px;
     width: 60px;
   }

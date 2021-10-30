@@ -5,3 +5,5 @@ export const CLOSE_MODAL_SIDE = "CLOSE_MODAL_SIDE";
 export const WORD_CHANGE = "WORD_CHANGE";
 export const FORM_SUBMIT = "FORM_SUBMIT";
 export const CLOSE_MSG_MODAL = "CLOSE_MSG_MODAL";
+export const REMOVE_CARD = "REMOVE_CARD";
+export const CHECK_MEMORIZED = "CHECK_MEMORIZED";

@@ -19,7 +19,8 @@ const initialStore = {
   isModalOpen: false,
   word: "",
   modalMsg: "",
-  isMsgModalOpen: true,
+  isMsgModalOpen: false,
+  isChecked: false,
 };
 
 //Store creation

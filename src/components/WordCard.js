@@ -1,11 +1,21 @@
+import axios from "axios";
 import React from "react";
+import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { REMOVE_CARD, CHECK_MEMORIZED } from "../actions";
 import Definition from "./Definition";
 
-function WordCard({ wordID, defData }) {
-  // console.log(defData);
+function WordCard({
+  wordID,
+  defData,
+  _id,
+  handleCardDelete,
+  handleCheck,
+  isChecked,
+}) {
+  //console.log(_id);
   return (
-    <div className="card-container">
+    <div className={`card-container ${isChecked ? "checked" : ""} `}>
       <h1>
         {wordID}
         <div className="under"></div>
@@ -17,8 +27,51 @@ function WordCard({ wordID, defData }) {
           return <Definition key={uuidv4()} definitions={definitions} />;
         })}
       </ul>
+      <button
+        className="remove-btn"
+        onClick={() => {
+          handleCardDelete(_id);
+        }}
+      >
+        Remove
+      </button>
+      <div className="check-box">
+        <input type="checkbox" className="check-input" onClick={handleCheck} />
+        <label className="label-text">Memorized</label>
+      </div>
     </div>
   );
 }
 
-export default WordCard;
+const mapStateToProps = (state) => {
+  const { isChecked } = state;
+  return { isChecked };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleCardDelete: async (_id) => {
+      await axios
+        .delete(`http://localhost:8000/api/v1/dictionary/${_id}`)
+        .then((response) => {
+          return dispatch({
+            type: REMOVE_CARD,
+            payload: { msg: response.data },
+          }); //{msg:{msg:'blah blah'}}
+        })
+        .catch((error) => {
+          console.log(error);
+          return dispatch({
+            type: REMOVE_CARD,
+            payload: { msg: error },
+          });
+        });
+    },
+
+    handleCheck: () => {
+      dispatch({ type: CHECK_MEMORIZED });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WordCard);
