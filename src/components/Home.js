@@ -7,6 +7,7 @@ import { DATA_FETCHED } from "../actions";
 import Loading from "./Loading";
 import MsgModal from "./modals/MsgModal";
 import WordModal from "./modals/WordModal";
+import Navbar from "./Navbar";
 
 import WordsList from "./WordsList";
 

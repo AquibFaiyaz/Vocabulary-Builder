@@ -9,6 +9,7 @@ import reducer from "./reducer";
 
 //Components
 import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
 //reducer fn
 
@@ -29,6 +30,7 @@ const store = createStore(reducer, initialStore);
 function App() {
   return (
     <Provider store={store}>
+      <Navbar />
       <Home />
     </Provider>
   );

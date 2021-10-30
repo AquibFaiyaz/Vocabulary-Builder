@@ -38,6 +38,7 @@ function WordCard({
       </button>
       <div className="check-box">
         <input
+          checked={memorized}
           type="checkbox"
           className="check-input"
           onClick={() => {

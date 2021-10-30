@@ -13,7 +13,7 @@ const override = css`
 function Loading({ isLoading }) {
   return (
     <>
-      <ClipLoader loading={isLoading} css={override} size={60} />
+      <ClipLoader loading={isLoading} css={override} size={40} />
       {/* <h1>Loading...</h1> */}
     </>
   );
