@@ -8,12 +8,14 @@ import {
   CLOSE_MSG_MODAL,
   REMOVE_CARD,
   CHECK_MEMORIZED,
+  SEARCH_TERM,
+  CLEAR_SEARCH,
 } from "./actions";
 
 const reducer = (state, action) => {
-  //console.log(action);
   if (action.type === DATA_FETCHED) {
     const { data } = action.payload;
+    console.log(data);
     return {
       ...state,
       data: data,
@@ -63,6 +65,13 @@ const reducer = (state, action) => {
   if (action.type === CHECK_MEMORIZED) {
     const { msg } = action.payload;
     return { ...state, modalMsg: msg, isMsgModalOpen: true };
+  }
+  if (action.type === SEARCH_TERM) {
+    const { searchVal } = action.payload;
+    return { ...state, searchTerm: searchVal };
+  }
+  if (action.type === CLEAR_SEARCH) {
+    return { ...state, searchTerm: "" };
   }
   return state;
 };

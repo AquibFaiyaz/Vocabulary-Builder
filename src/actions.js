@@ -7,3 +7,5 @@ export const FORM_SUBMIT = "FORM_SUBMIT";
 export const CLOSE_MSG_MODAL = "CLOSE_MSG_MODAL";
 export const REMOVE_CARD = "REMOVE_CARD";
 export const CHECK_MEMORIZED = "CHECK_MEMORIZED";
+export const SEARCH_TERM = "SEARCH_TERM";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";

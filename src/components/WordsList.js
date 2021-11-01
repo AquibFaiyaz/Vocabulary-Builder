@@ -1,11 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { OPEN_MODAL } from "../actions";
+import { OPEN_MODAL, SEARCH_TERM, CLEAR_SEARCH } from "../actions";
 import { BiBookAdd } from "react-icons/bi";
 
 import WordCard from "./WordCard";
 
-function WordsList({ data = [], modalHandler }) {
+function WordsList({
+  data = [],
+  modalHandler,
+  searchHandler,
+  searchTerm,
+  clearHandler,
+}) {
   //console.log(data);
   if (data.length === 0) {
     return (
@@ -31,25 +37,51 @@ function WordsList({ data = [], modalHandler }) {
   }
   return (
     <>
+      <input
+        type="text"
+        value={searchTerm}
+        placeholder="Search..."
+        onChange={(e) => {
+          searchHandler(e);
+        }}
+      />
+      <button onClick={clearHandler}>X</button>
       <button onClick={modalHandler} className="fetch-btn">
         <BiBookAdd className="download" />
       </button>
-      {data.map((item) => {
-        const { _id } = item;
-        return <WordCard key={_id} {...item} />;
-      })}
+      {data
+        .filter((word) => {
+          if (searchTerm === "") {
+            return word;
+          } else if (
+            word.wordID.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return word;
+          }
+        })
+        .map((item) => {
+          const { _id } = item;
+          return <WordCard key={_id} {...item} />;
+        })}
     </>
   );
 }
 const mapStateToProps = (state) => {
-  const { data } = state;
-  return { data };
+  const { data, searchTerm } = state;
+  return { data, searchTerm };
 };
 
 const mapDispatchToProp = (dispatch) => {
   return {
     modalHandler: () => {
       dispatch({ type: OPEN_MODAL });
+    },
+    searchHandler: (e) => {
+      const searchVal = e.target.value;
+      dispatch({ type: SEARCH_TERM, payload: { searchVal } });
+    },
+    clearHandler: () => {
+      dispatch({ type: CLEAR_SEARCH });
     },
   };
 };

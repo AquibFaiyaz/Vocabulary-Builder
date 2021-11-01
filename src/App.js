@@ -22,6 +22,7 @@ const initialStore = {
   modalMsg: "",
   isMsgModalOpen: false,
   isChecked: false,
+  searchTerm: "",
 };
 
 //Store creation
