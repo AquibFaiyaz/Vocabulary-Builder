@@ -14,7 +14,8 @@ function WordCard({
   handleCheck,
   isChecked,
 }) {
-  //console.log(_id);
+  console.log(wordID);
+
   return (
     <div className={`card-container ${memorized ? "checked" : ""} `}>
       <h1>

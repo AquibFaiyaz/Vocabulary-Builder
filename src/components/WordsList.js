@@ -37,15 +37,20 @@ function WordsList({
   }
   return (
     <>
-      <input
-        type="text"
-        value={searchTerm}
-        placeholder="Search..."
-        onChange={(e) => {
-          searchHandler(e);
-        }}
-      />
-      <button onClick={clearHandler}>X</button>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          value={searchTerm}
+          placeholder="Search..."
+          onChange={(e) => {
+            searchHandler(e);
+          }}
+        />
+        <button onClick={clearHandler} className="search-btn">
+          X
+        </button>
+      </div>
       <button onClick={modalHandler} className="fetch-btn">
         <BiBookAdd className="download" />
       </button>

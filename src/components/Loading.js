@@ -1,7 +1,7 @@
 import React from "react";
 
 import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/GridLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { connect } from "react-redux";
 
 const override = css`
@@ -9,11 +9,17 @@ const override = css`
   margin: 15rem auto;
   border-color: red;
 `;
+let color = "blue";
 
 function Loading({ isLoading }) {
   return (
     <>
-      <ClipLoader loading={isLoading} css={override} size={40} />
+      <ClimbingBoxLoader
+        loading={isLoading}
+        css={override}
+        size={30}
+        color={color}
+      />
       {/* <h1>Loading...</h1> */}
     </>
   );
