@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleCardDelete: async (_id) => {
       await axios
-        .delete(`http://localhost:8000/api/v1/dictionary/${_id}`)
+        .delete(`http://3.137.218.234:8000/api/v1/dictionary/${_id}`)
         .then((response) => {
           return dispatch({
             type: REMOVE_CARD,
@@ -80,7 +80,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     handleCheck: async (_id) => {
       const { memorized } = ownProps;
       await axios
-        .patch(`http://localhost:8000/api/v1/dictionary/${_id}`, {
+        .patch(`http://3.137.218.234:8000/api/v1/dictionary/${_id}`, {
           memorized: !memorized,
         })
         .then((response) => {

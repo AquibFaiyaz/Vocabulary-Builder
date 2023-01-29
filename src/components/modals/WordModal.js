@@ -55,7 +55,7 @@ const mapDispatcToProps = (dispatch) => {
       e.preventDefault();
 
       await axios
-        .post("http://localhost:8000/api/v1/dictionary", {
+        .post("http://3.137.218.234:8000/api/v1/dictionary", {
           wordID: word,
         })
         .then((response) => {
