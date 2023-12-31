@@ -12,7 +12,7 @@ import Navbar from "./Navbar";
 import WordsList from "./WordsList";
 
 //url for data fetching
-const url = "http://212.227.243.53:3000/api/v1/dictionary";
+const url = "https://212.227.243.53:3000/api/v1/dictionary";
 
 function Home({
   fetchHandler,
